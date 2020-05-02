@@ -1,0 +1,46 @@
+type: install
+id: manifold
+name: Manifold
+baseUrl: https://raw.githubusercontent.com/timmmmyboy/manifold-manifest/master
+logo: /images/logo.jpg
+
+description: 
+  text: Manifold is the easy method for academic publishers to move their catalog online and provide a powerful reading, annotation, and community experience for everyone.
+  short: Host your own Manifold server
+  
+globals: 
+  email: ${user.email} 
+  password: ${fn.password}
+
+nodes:
+  nodeType: dockerengine
+  nodeGroup: cp
+  cloudlets: 24
+  displayName: Manifold Server
+
+onInstall: setup
+
+actions:
+  setup:
+    cmd[cp]: |-
+      git clone https://github.com/ManifoldScholar/manifold-docker-compose.git && cd manifold-docker-compose;
+      sed -i "s|127.0.0.1:4000|${env.domain}|g" environment/manifold.env;
+      sed -i "s|#||g" docker-compose.yml;
+      MANIFOLD_TAG=v5.0.0-alpha.1 docker-compose up -d
+
+      #Checking of container is up and running 
+      until [ "`/usr/bin/docker inspect -f {{.State.Running}} manifold-docker-compose_client_1`"=="true" ]; do
+        sleep 1
+        print '.'
+      done;
+
+      #Adding admin user 
+      docker exec -it manifold-docker-compose_api_rails_1 rails manifold:user:create:admin['${globals.email}','${globals.password}','Super','User']
+      echo OK
+
+success: | 
+  **Manifold Server**: [http://${env.domain}/](http://${env.domain}/)  
+  **User**: ${globals.email}  
+  **Password**: ${globals.password}  
+  
+  It may take several minutes till your environment is ready.
