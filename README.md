@@ -1,4 +1,4 @@
-<img align="left" width="150" src="images/logo.svg">
+<img align="left" width="150" src="images/logo.jpg">
 
 # Manifold Jelastic Manifest 
 
