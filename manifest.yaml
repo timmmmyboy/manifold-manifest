@@ -4,6 +4,9 @@ name: Manifold
 baseUrl: https://raw.githubusercontent.com/timmmmyboy/manifold-manifest/master
 logo: /images/logo.jpg
 
+categories: 
+- apps/content-management
+
 description: 
   text: Manifold is the easy method for academic publishers to move their catalog online and provide a powerful reading, annotation, and community experience for everyone.
   short: Host your own Manifold server
