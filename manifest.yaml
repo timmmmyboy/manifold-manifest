@@ -2,10 +2,11 @@ type: install
 id: manifold
 name: Manifold
 baseUrl: https://raw.githubusercontent.com/timmmmyboy/manifold-manifest/master
-logo: /images/logo.jpg
+logo: /images/manifold-logo.png
 
 categories: 
 - apps/content-management
+- apps/education
 
 description: 
   text: Manifold is the easy method for academic publishers to move their catalog online and provide a powerful reading, annotation, and community experience for everyone.
