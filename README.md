@@ -1,5 +1,4 @@
-<img align="left" width="150" src="images/logo.jpg">
+<img align="left" width="75" src="images/manifold-logo.png">
 
-# Manifold Jelastic Manifest 
+# Manifold on Reclaim Cloud
 
-This is a test deployment to a Jelastic cloud instance
